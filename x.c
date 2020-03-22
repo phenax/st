@@ -659,6 +659,7 @@ selrequest(XEvent *e)
 			xev.property = xsre->property;
 		}
 	}
+  /* clippaste(NULL); */
 
 	/* all done, send a notification to the listener */
 	if (!XSendEvent(xsre->display, xsre->requestor, 1, 0, (XEvent *) &xev))
@@ -677,6 +678,8 @@ setsel(char *str, Time t)
 	XSetSelectionOwner(xw.dpy, XA_PRIMARY, xw.win, t);
 	if (XGetSelectionOwner(xw.dpy, XA_PRIMARY) != xw.win)
 		selclear();
+
+	clipcopy(NULL);
 }
 
 void
