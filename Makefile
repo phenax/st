@@ -7,7 +7,10 @@ include config.mk
 SRC = st.c x.c
 OBJ = $(SRC:.c=.o)
 
-all: options st
+all: removeconfig options st
+
+removeconfig:
+	rm config.h
 
 options:
 	@echo st build options:

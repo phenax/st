@@ -5,11 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Code:pixelsize=13:antialias=true:autohint=true";
+static char *font = "Fira Code:pixelsize=12:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-  "FontAwesome:pixelsize=13:antialias=true:autohint=true",
-  "xft:Noto Color Emoji:pixelsize=13:antialias=true:autohint=true",
+  "FontAwesome:pixelsize=12:antialias=true:autohint=true",
+  "xft:Noto Color Emoji:pixelsize=12:antialias=true:autohint=true",
   // "Symbola:pixelsize=10:antialias=true:autohint=true",
 };
 
@@ -33,7 +33,7 @@ char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-static float cwscale = 1.0;
+static float cwscale = 0.8;
 static float chscale = 1.0;
 
 /*
@@ -101,8 +101,8 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.9;
-float alphaUnfocussed = 0.6;  //< alpha value used when the focus is lost
+float alpha = 0.8;
+float alphaUnfocussed = 1;  //< alpha value used when the focus is lost
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -228,7 +228,7 @@ static MouseShortcut mshortcuts[] = {
 };
 
 static char *openurlcmd[] = { "/bin/sh", "-c",
-	"xurls | rofi -dmenu -p 'URLs' -l 10 -w $WINDOWID -theme dmenu | xargs -r xdg-open",
+	"xurls | rofi -dmenu -p 'URLs :: ' -l 10 -w $WINDOWID -theme dmenu | xargs -r xdg-open",
 	"externalpipe", NULL };
 
 /* Internal keyboard shortcuts. */
