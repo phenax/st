@@ -5,11 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Code:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Fira Code:pixelsize=13:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-  "FontAwesome:pixelsize=10:antialias=true:autohint=true",
-  "xft:Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
+  "FontAwesome:pixelsize=13:antialias=true:autohint=true",
+  "xft:Noto Color Emoji:pixelsize=13:antialias=true:autohint=true",
   // "Symbola:pixelsize=10:antialias=true:autohint=true",
 };
 
@@ -90,8 +90,8 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.9;           //< alpha value used when the window is focused.
-float alphaUnfocussed = 0.4; //< alpha value used when the focus is lost
+float alpha = 0.9;
+float alphaUnfocussed = 0.6;  //< alpha value used when the focus is lost
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
