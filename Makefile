@@ -10,7 +10,7 @@ OBJ = $(SRC:.c=.o)
 all: removeconfig options st
 
 removeconfig:
-	rm config.h
+	rm config.h || true
 
 options:
 	@echo st build options:

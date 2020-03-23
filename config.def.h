@@ -10,10 +10,9 @@ static char *font = "Fira Code:pixelsize=12:antialias=true:autohint=true";
 static char *font2[] = {
   "FontAwesome:pixelsize=12:antialias=true:autohint=true",
   "xft:Noto Color Emoji:pixelsize=12:antialias=true:autohint=true",
-  // "Symbola:pixelsize=10:antialias=true:autohint=true",
 };
 
-static int borderpx = 5;
+static int borderpx = 3;
 
 /*
  * What program is execed by st depends of these precedence rules:
