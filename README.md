@@ -1,4 +1,4 @@
-# phenax st - My fork of st (https://git.suckless.org/st)
+# phenax st - My fork of st (https://st.suckless.org/)
 st is a simple terminal emulator for X which sucks less.
 
 
@@ -17,7 +17,7 @@ necessary as root):
     make clean install
 
 
-### Magic stuff
+### Additional stuff
 * `Ctrl + Shift + u` will bring up a `rofi` menu with a list of all urls in the output. Selecting one will open the url with `xdg-open`
 * `Shift + PageUp/PageDown` for scrolling through history
 * `Ctrl + Shift + Escape` to go into visual selection mode. `s` to start selecting text
