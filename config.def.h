@@ -233,7 +233,7 @@ static MouseShortcut mshortcuts[] = {
 };
 
 static char *openurlcmd[] = { "/bin/sh", "-c",
-	"xurls | rofi -dmenu -p 'URL :: ' -l 10 -w $WINDOWID -theme dmenu | xargs -r xdg-open",
+	"xurls | rofi -dmenu -p 'URL :: ' -l 10 -w $WINDOWID -theme './dmenu.rasi' | xargs -r xdg-open",
 	"externalpipe", NULL };
 
 /* Internal keyboard shortcuts. */
