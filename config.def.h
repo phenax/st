@@ -232,9 +232,12 @@ static MouseShortcut mshortcuts[] = {
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
-static char *openurlcmd[] = { "/bin/sh", "-c",
-	"xurls | rofi -dmenu -p 'URL :: ' -l 10 -w $WINDOWID -theme './dmenu.rasi' | xargs -r xdg-open",
-	"externalpipe", NULL };
+// extract-urls is a custom program in ~/.bin
+static char *openurlcmd[] = { "/bin/bash", "-c",
+  "extract-urls | rofi -dmenu -p 'URL :: ' -l 10 -w $WINDOWID -theme './dmenu.rasi' | xargs -r xdg-open",
+	"externalpipe",
+	NULL
+};
 
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
