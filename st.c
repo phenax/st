@@ -2731,25 +2731,26 @@ void set_notifmode(int type, KeySym ksym) {
         col = term.col, bot = term.bot;
         g = xmalloc(col * sizeof(Glyph));
         memcpy(g, term.line[bot], col * sizeof(Glyph));
-    
-    }
-    else if ( ksym == -2 )
+    } else if ( ksym == -2 ) {
         memcpy(term.line[bot], g, col * sizeof(Glyph));
+    }
 
     if ( type < 2 ) {
         char *z = lib[type];
-        for (deb = &term.line[bot][col - 6], fin = &term.line[bot][col]; deb < fin; z++, deb++)
+        for (deb = &term.line[bot][col - 6], fin = &term.line[bot][col]; deb < fin; z++, deb++) {
             deb->mode = ATTR_REVERSE,
             deb->u = *z,
             deb->fg = defaultfg, deb->bg = defaultbg;
-    }
-    else if ( type < 5 )
+        }
+    } else if ( type < 5 ) {
         memcpy(term.line[bot], g, col * sizeof(Glyph));
-    else {
-        for (deb = &term.line[bot][0], fin = &term.line[bot][col]; deb < fin; deb++)
+    } else {
+        for (deb = &term.line[bot][0], fin = &term.line[bot][col]; deb < fin; deb++) {
             deb->mode = ATTR_REVERSE,
             deb->u = ' ',
             deb->fg = defaultfg, deb->bg = defaultbg;
+        }
+
         term.line[bot][0].u = ksym;
     }
 
@@ -2798,39 +2799,32 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
     static int sens, quant;
     static char selectsearch_mode;
     int i, bound, *xy;
-    
-    
+
     if ( selectsearch_mode & 2 ) {
-		if ( ksym == XK_Return ) {
-			selectsearch_mode ^= 2;
-			set_notifmode(selectsearch_mode, -2);
-            if ( ksym == XK_Escape )    ptarget = 0;
-			return 0;
-		}
-        else if ( ksym == XK_BackSpace ) {
-            if ( !ptarget )     return 0;
-            term.line[term.bot][ptarget--].u = ' ';
-		}
-        else if ( len < 1 ) {
-			return 0;
-		}
-        else if ( ptarget == term.col  || ksym == XK_Escape ) {
+        if ( ksym == XK_y ) {
+            selectsearch_mode ^= 2;
+            set_notifmode(selectsearch_mode, -2);
             return 0;
-        }
-		else {
+        } else if ( ksym == XK_0 ) {
+            if ( !ptarget ) return 0;
+            term.line[term.bot][ptarget--].u = ' ';
+        } else if ( len < 1 ) {
+            return 0;
+        } else if ( ptarget == term.col  || ksym == XK_Escape ) {
+            return 0;
+        } else {
             utf8decode(buf, &target[ptarget++], len);
             term.line[term.bot][ptarget].u = target[ptarget - 1];
-		}
+        }
 
-        if ( ksym != XK_BackSpace )
+        if ( ksym != XK_0 ) {
             search(selectsearch_mode, &target[0], ptarget, sens, type, &cu);
+        }
 
         term.dirty[term.bot] = 1; 
         drawregion(0, term.bot, term.col, term.bot + 1);
         return 0;
     }
-
-    printf("Number: %d", ksym);
 
     // TODO: Enable scrolling
     // TODO: Add yank
@@ -2870,11 +2864,12 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         selectsearch_mode ^= 2;
         break;
     // Exit mode
+    case XK_Return :
     case XK_Escape :
         if ( !in_use )  break;
         selclear();
-    // Exit mode but maintain selection
-    case XK_Return :
+    // Yank/Copy
+    case XK_y :
         set_notifmode(4, ksym);
         term.c.x = cu.x, term.c.y = cu.y;
         select_or_drawcursor(selectsearch_mode = 0, type);
