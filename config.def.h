@@ -215,9 +215,10 @@ static uint forcemousemod = ShiftMask;
 
 /*
  * Control how fast the scroll is
+ * Negative is Total number of lines - number
  */
-#define scrollincrement -20
-#define fastscrollincrement -7
+#define scrollincrement 5
+#define fastscrollincrement -10
 
 /*
  * Internal mouse shortcuts.
@@ -245,30 +246,30 @@ static char *openurlcmd[] = { "/bin/bash", "-c",
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
-	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
-	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
-	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
-	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
+	{ XK_ANY_MOD,           XK_Break,       sendbreak,        {.i =  0} },
+	{ ControlMask,          XK_Print,       toggleprinter,    {.i =  0} },
+	{ ShiftMask,            XK_Print,       printscreen,      {.i =  0} },
+	{ XK_ANY_MOD,           XK_Print,       printsel,         {.i =  0} },
 
   // ZOOM
-	{ TERMMOD,              XK_plus,        zoom,           {.f = +1} },
-	{ TERMMOD,              XK_underscore,  zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+	{ TERMMOD,              XK_plus,        zoom,             {.f = +1} },
+	{ TERMMOD,              XK_underscore,  zoom,             {.f = -1} },
+	{ TERMMOD,              XK_Home,        zoomreset,        {.f =  0} },
 
   // Copy/paste
-	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
-	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
-	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
+	{ TERMMOD,              XK_C,           clipcopy,         {.i =  0} },
+	{ TERMMOD,              XK_V,           clippaste,        {.i =  0} },
+	{ TERMMOD,              XK_Y,           selpaste,         {.i =  0} },
 
   // Scroll
-	{ TERMMOD,              XK_Up,          kscrollup,      {.i = scrollincrement} },
-	{ TERMMOD,              XK_Down,        kscrolldown,    {.i = scrollincrement} },
-	{ TERMMOD,              XK_Page_Up,     kscrollup,      {.i = fastscrollincrement} },
-	{ TERMMOD,              XK_Page_Down,   kscrolldown,    {.i = fastscrollincrement} },
+	{ TERMMOD,              XK_Up,          kscrollup,        {.i = scrollincrement} },
+	{ TERMMOD,              XK_Down,        kscrolldown,      {.i = scrollincrement} },
+	{ TERMMOD,              XK_Page_Up,     kscrollup,        {.i = fastscrollincrement} },
+	{ TERMMOD,              XK_Page_Down,   kscrolldown,      {.i = fastscrollincrement} },
 
   // Misc
-  { TERMMOD,              XK_Escape,      keyboard_select, { 0 } },
-  { TERMMOD,              XK_U,           externalpipe, { .v = openurlcmd } },
+  { TERMMOD,              XK_Escape,      keyboard_select,  { 0 } },
+  { TERMMOD,              XK_U,           externalpipe,     { .v = openurlcmd } },
 };
 
 /*
