@@ -2827,7 +2827,6 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
     }
 
     // TODO: Enable scrolling
-    // TODO: Add yank
     switch ( ksym ) {
     case -1 :
         in_use = 1;
@@ -2891,21 +2890,17 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         term.c.x = term.col - 1;
         select_or_drawcursor(selectsearch_mode, type);
         break;
-    // First line
+    // First/Last line
     case XK_g :
-        term.c.x = 0, term.c.y = 0;
-        select_or_drawcursor(selectsearch_mode, type);
-        break;
-    // Last line
     case XK_G :
-        term.c.x = cu.x, term.c.y = cu.y;
+        term.c.y = ksym == XK_g ? 0 : cu.y;
+        select_or_drawcursor(selectsearch_mode, type);
         select_or_drawcursor(selectsearch_mode, type);
         break;
     // First/Last line with the same column
     case XK_Page_Up :
     case XK_Page_Down :
-        term.c.y = (ksym == XK_Prior ) ? 0 : cu.y;
-        select_or_drawcursor(selectsearch_mode, type);
+        // Write code for scrolling
         break;
     // Move to middle of line
     case XK_exclam :
