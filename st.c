@@ -2799,6 +2799,7 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
     static int sens, quant;
     static char selectsearch_mode;
     int i, bound, *xy;
+    // Arg arg;
 
     if ( selectsearch_mode & 2 ) {
         if ( ksym == XK_y ) {
@@ -2833,6 +2834,12 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         cu.x = term.c.x, cu.y = term.c.y;
         set_notifmode(0, ksym);
         return MODE_KBDSELECT;
+    // // Scrolling
+    // case XK_Page_Up :
+    // case XK_Page_Down :
+    //     arg = (Arg) { .i = -7 };
+    //     kscrolldown(&arg);
+    //     break;
     // Selection mode
     case XK_V :
     case XK_v :
@@ -2896,11 +2903,6 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         term.c.y = ksym == XK_g ? 0 : cu.y;
         select_or_drawcursor(selectsearch_mode, type);
         select_or_drawcursor(selectsearch_mode, type);
-        break;
-    // First/Last line with the same column
-    case XK_Page_Up :
-    case XK_Page_Down :
-        // Write code for scrolling
         break;
     // Move to middle of line
     case XK_exclam :
