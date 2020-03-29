@@ -2830,23 +2830,36 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         return 0;
     }
 
+    printf("Number: %d", ksym);
+
+    // TODO: Enable scrolling
+    // TODO: Add yank
     switch ( ksym ) {
     case -1 :
         in_use = 1;
         cu.x = term.c.x, cu.y = term.c.y;
         set_notifmode(0, ksym);
         return MODE_KBDSELECT;
-    case XK_s :
-        if ( selectsearch_mode & 1 )
+    // Selection mode
+    case XK_V :
+    case XK_v :
+        if ( selectsearch_mode & 1 ) {
             selclear();
-        else
+        } else {
+            if (ksym == XK_V) {
+              term.c.x = 0;
+            }
+
             selstart(term.c.x, term.c.y, 0);
+        }
         set_notifmode(selectsearch_mode ^= 1, ksym);
         break;
+    // Rectangular selection
     case XK_t :
         selextend(term.c.x, term.c.y, type ^= 3, i = 0);  /* 2 fois */
         selextend(term.c.x, term.c.y, type, i = 0);
         break;
+    // Search
     case XK_slash :
     case XK_KP_Divide :
     case XK_question :
@@ -2856,52 +2869,64 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         set_notifmode(15, ksym);
         selectsearch_mode ^= 2;
         break;
+    // Exit mode
     case XK_Escape :
         if ( !in_use )  break;
         selclear();
+    // Exit mode but maintain selection
     case XK_Return :
         set_notifmode(4, ksym);
         term.c.x = cu.x, term.c.y = cu.y;
         select_or_drawcursor(selectsearch_mode = 0, type);
         in_use = quant = 0;
         return MODE_KBDSELECT;
+    // Next and prev in search
     case XK_n :
     case XK_N :
         if ( ptarget )
             search(selectsearch_mode, &target[0], ptarget, (ksym == XK_n) ? -1 : 1, type, &cu);
         break;
-    case XK_BackSpace :
+    // Start of line
+    case XK_0 :
         term.c.x = 0;
         select_or_drawcursor(selectsearch_mode, type);
         break;
+    // End of line
     case XK_dollar :
         term.c.x = term.col - 1;
         select_or_drawcursor(selectsearch_mode, type);
         break;
-    case XK_Home :
+    // First line
+    case XK_g :
         term.c.x = 0, term.c.y = 0;
         select_or_drawcursor(selectsearch_mode, type);
         break;
-    case XK_End :
+    // Last line
+    case XK_G :
         term.c.x = cu.x, term.c.y = cu.y;
         select_or_drawcursor(selectsearch_mode, type);
         break;
+    // First/Last line with the same column
     case XK_Page_Up :
     case XK_Page_Down :
         term.c.y = (ksym == XK_Prior ) ? 0 : cu.y;
         select_or_drawcursor(selectsearch_mode, type);
         break;
+    // Move to middle of line
     case XK_exclam :
         term.c.x = term.col >> 1;
         select_or_drawcursor(selectsearch_mode, type);
         break;
+    // Move to middle of column
     case XK_asterisk :
     case XK_KP_Multiply :
         term.c.x = term.col >> 1;
+    // Move to middle of screen
     case XK_underscore :
         term.c.y = cu.y >> 1;
         select_or_drawcursor(selectsearch_mode, type);
         break;
+    // With quantifiers
     default :
         if ( ksym >= XK_0 && ksym <= XK_9 ) {               /* 0-9 keyboard */
             quant = (quant * 10) + (ksym ^ XK_0);

@@ -219,6 +219,7 @@ static MouseShortcut mshortcuts[] = {
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
+// extract-urls is a custom program in ~/.bin
 static char *openurlcmd[] = { "/bin/bash", "-c",
   "extract-urls | rofi -dmenu -p 'URL :: ' -l 10 -w $WINDOWID -theme './dmenu.rasi' | xargs -r xdg-open",
 	"externalpipe",
@@ -247,10 +248,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 
   // Scroll
-	{ ShiftMask,            XK_Up,          kscrollup,      {.i = scrollincrement} },
-	{ ShiftMask,            XK_Down,        kscrolldown,    {.i = scrollincrement} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = fastscrollincrement} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = fastscrollincrement} },
+	{ TERMMOD,              XK_Up,          kscrollup,      {.i = scrollincrement} },
+	{ TERMMOD,              XK_Down,        kscrolldown,    {.i = scrollincrement} },
+	{ TERMMOD,              XK_Page_Up,     kscrollup,      {.i = fastscrollincrement} },
+	{ TERMMOD,              XK_Page_Down,   kscrolldown,    {.i = fastscrollincrement} },
 
   // Misc
   { TERMMOD,              XK_Escape,      keyboard_select, { 0 } },

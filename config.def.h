@@ -261,10 +261,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 
   // Scroll
-	{ ShiftMask,            XK_Up,          kscrollup,      {.i = scrollincrement} },
-	{ ShiftMask,            XK_Down,        kscrolldown,    {.i = scrollincrement} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = fastscrollincrement} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = fastscrollincrement} },
+	{ TERMMOD,              XK_Up,          kscrollup,      {.i = scrollincrement} },
+	{ TERMMOD,              XK_Down,        kscrolldown,    {.i = scrollincrement} },
+	{ TERMMOD,              XK_Page_Up,     kscrollup,      {.i = fastscrollincrement} },
+	{ TERMMOD,              XK_Page_Down,   kscrolldown,    {.i = fastscrollincrement} },
 
   // Misc
   { TERMMOD,              XK_Escape,      keyboard_select, { 0 } },
