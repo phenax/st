@@ -127,7 +127,7 @@ static const char *colorname[] = {
 
 	[255] = 0,
 	"red",
-	"red",
+	"gray50",
 	"black",
 };
 
