@@ -2801,24 +2801,27 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
     int i, bound, *xy;
     // Arg arg;
 
+    /* case XK_Return : */
+    /* case XK_Escape : */
     if ( selectsearch_mode & 2 ) {
-        if ( ksym == XK_y ) {
+        if ( ksym == XK_Return ) { // Execute search
             selectsearch_mode ^= 2;
             set_notifmode(selectsearch_mode, -2);
             return 0;
-        } else if ( ksym == XK_0 ) {
+        } else if ( ksym == XK_BackSpace ) { // Backspace in search mode
             if ( !ptarget ) return 0;
             term.line[term.bot][ptarget--].u = ' ';
         } else if ( len < 1 ) {
             return 0;
-        } else if ( ptarget == term.col  || ksym == XK_Escape ) {
+        } else if ( ptarget == term.col  || ksym == XK_Escape ) { // exit search
             return 0;
         } else {
             utf8decode(buf, &target[ptarget++], len);
             term.line[term.bot][ptarget].u = target[ptarget - 1];
         }
 
-        if ( ksym != XK_0 ) {
+        // Backspace in search mode
+        if ( ksym != XK_BackSpace ) {
             search(selectsearch_mode, &target[0], ptarget, sens, type, &cu);
         }
 
@@ -2885,7 +2888,7 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
     case XK_n :
     case XK_N :
         if ( ptarget )
-            search(selectsearch_mode, &target[0], ptarget, (ksym == XK_n) ? -1 : 1, type, &cu);
+            search(selectsearch_mode, &target[0], ptarget, (ksym == XK_N) ? -1 : 1, type, &cu);
         break;
     // Start of line
     case XK_0 :
