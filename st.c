@@ -2875,6 +2875,7 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
     // Exit mode
     case XK_Return :
     case XK_Escape :
+    case XK_i :
         if ( !in_use )  break;
         selclear();
     // Yank/Copy

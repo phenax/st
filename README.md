@@ -22,9 +22,11 @@ make clean install
     - `y` to copy and exit visual selection
     - `g` to go to the top
     - `G` to go to the bottom
-    - `Escape` or `Enter` to exit out of selection mode
+    - `Escape` or `Enter` or `i` to go to insert mode i.e. exit out of vim mode
     - `0` to go the start of the line
     - `$` to go the end of the line
+    - `/` to search in window
+    - `n/N` for next/prev search result
 
 
 ### Patches included in the fork
