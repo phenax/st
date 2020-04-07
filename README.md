@@ -1,4 +1,4 @@
-# phenax st - My fork of st (https://st.suckless.org/)
+# st - My fork of st (https://st.suckless.org/)
 st is a simple terminal emulator for X which sucks less.
 
 
