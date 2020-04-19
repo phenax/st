@@ -5,11 +5,13 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Code:pixelsize=12:antialias=true:autohint=true";
+static char *font = "FiraCode Nerd Font:pixelsize=12:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-  "FontAwesome:pixelsize=12:antialias=true:autohint=true",
-  "xft:Noto Color Emoji:pixelsize=12:antialias=true:autohint=true",
+  "Font Awesome 5 Free:pixelsize=12:antialias=true:autohint=true",
+  "Symbols Nerd Font:pixelsize=12:antialias=true:autohint=true",
+  "devicons:pixelsize=12:antialias=true:autohint=true",
+  // "xft:Noto Color Emoji:pixelsize=12:antialias=true:autohint=true",
 };
 
 static int borderpx = 3;
@@ -32,7 +34,7 @@ char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-static float cwscale = 0.8;
+static float cwscale = 1.0;
 static float chscale = 1.0;
 
 /*
@@ -143,10 +145,9 @@ static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
- * 2: Block ("█")
- * 4: Underline ("_")
- * 6: Bar ("|")
- * 7: Snowman ("☃")
+ * 2: Block
+ * 4: Underline
+ * 6: Bar
  */
 static unsigned int cursorshape = 2;
 
