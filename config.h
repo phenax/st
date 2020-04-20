@@ -10,7 +10,7 @@ static char *font = "FiraCode Nerd Font:pixelsize=12:antialias=true:autohint=tru
 static char *font2[] = {
   "Font Awesome 5 Free:pixelsize=12:antialias=true:autohint=true",
   "Symbols Nerd Font:pixelsize=12:antialias=true:autohint=true",
-  "devicons:pixelsize=12:antialias=true:autohint=true",
+  "Symbola:pixelsize=12:antialias=true:autohint=true",
   // "xft:Noto Color Emoji:pixelsize=12:antialias=true:autohint=true",
 };
 
@@ -233,8 +233,8 @@ static MouseShortcut mshortcuts[] = {
 
 // Show all urls in the response
 // extract-urls is a custom program in ~/.bin
-static char *openurlcmd[] = { "/bin/bash", "-c",
-  "extract-urls | rofi -dmenu -p 'URL :: ' -l 10 -w $WINDOWID -theme './dmenu.rasi' | xargs -r xdg-open",
+static char *openurlcmd[] = { "bash", "-c",
+  "~/.bin/extract-urls | rofi -dmenu -p 'URL :: ' -l 10 -w $WINDOWID -theme './dmenu.rasi' | xargs -r xdg-open",
 	"externalpipe",
 	NULL
 };
