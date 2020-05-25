@@ -246,7 +246,8 @@ static MouseShortcut mshortcuts[] = {
 // Show all urls in the response
 // extract-urls is a custom program in ~/.bin
 static char *openurlcmd[] = { "bash", "-c",
-  "~/.bin/extract-urls | rofi -dmenu -p 'URL :: ' -l 10 -w $WINDOWID -theme './dmenu.rasi' | xargs -r xdg-open",
+  // "~/.bin/extract-urls | dmenu -p ':: ' -l 10 -wid $WINDOWID | xargs -r xdg-open",
+  "~/.bin/extract-urls | dmenu -p ':: ' -l 10 | xargs -r xdg-open",
 	"externalpipe",
 	NULL
 };
