@@ -247,7 +247,7 @@ static MouseShortcut mshortcuts[] = {
 // extract-urls is a custom program in ~/.bin
 static char *openurlcmd[] = { "bash", "-c",
   // "~/.bin/extract-urls | dmenu -p ':: ' -l 10 -wid $WINDOWID | xargs -r xdg-open",
-  "~/.bin/extract-urls | dmenu -p ':: ' -l 10 | xargs -r xdg-open",
+  "~/.bin/extract-urls | dmenu -p ':: ' -l 10 -wid $WINDOWID | xargs -r xdg-open",
 	"externalpipe",
 	NULL
 };
