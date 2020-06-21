@@ -4,7 +4,7 @@ st is a simple terminal emulator for X which sucks less.
 
 ### Requirements
 In order to build st you need the Xlib header files.
-You also need rofi installed for the prompts
+You also need dmenu installed for the prompts
 
 
 ### Installation
@@ -15,7 +15,7 @@ make clean install
 ```
 
 ### Additional stuff
-* `Ctrl + Shift + u` will bring up a `rofi` menu with a list of all urls in the output. Selecting one will open the url with `xdg-open`
+* `Ctrl + Shift + u` will bring up `dmenu` with a list of all urls in the output. Selecting one will open the url with `xdg-open`
 * `Ctrl + Shift + PageUp/PageDown` for scrolling through history. Mouse scroll is disabled but you can enable it by uncommenting a few lines under `mshortcuts` in `config.def.h`
 * `Ctrl + Shift + Escape` to go into visual selection mode. The patch has been overridden to make the key bindings more vim like.
     - `v` to start selecting text
