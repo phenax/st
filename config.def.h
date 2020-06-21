@@ -8,6 +8,7 @@
 static char *font = "JetBrains Mono:pixelsize=12:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
+  "CozetteVector:pixelsize=12:antialias=true:autohint=true",
   "Font Awesome 5 Free:pixelsize=12:antialias=true:autohint=true",
   "Symbols Nerd Font:pixelsize=12:antialias=true:autohint=true",
   "Symbola:pixelsize=12:antialias=true:autohint=true",
