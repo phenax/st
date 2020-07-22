@@ -275,6 +275,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Down,        kscrolldown,      {.i = scrollincrement} },
 	{ TERMMOD,              XK_Page_Up,     kscrollup,        {.i = fastscrollincrement} },
 	{ TERMMOD,              XK_Page_Down,   kscrolldown,      {.i = fastscrollincrement} },
+	{ MODKEY,               XK_k,           kscrollup,        {.i = scrollincrement} },
+	{ MODKEY,               XK_j,           kscrolldown,      {.i = scrollincrement} },
 
   // Misc
   { TERMMOD,              XK_Escape,      keyboard_select,  { 0 } },
