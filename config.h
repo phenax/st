@@ -115,7 +115,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.9;
+float alpha = 0.9999;
 float alphaUnfocussed = 1;  //< alpha value used when the focus is lost
 
 /* Terminal colors (16 first used in escape sequence) */
@@ -275,8 +275,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Down,        kscrolldown,      {.i = scrollincrement} },
 	{ TERMMOD,              XK_Page_Up,     kscrollup,        {.i = fastscrollincrement} },
 	{ TERMMOD,              XK_Page_Down,   kscrolldown,      {.i = fastscrollincrement} },
-	{ MODKEY,              XK_k,          kscrollup,        {.i = scrollincrement} },
-	{ MODKEY,              XK_j,        kscrolldown,      {.i = scrollincrement} },
+	//{ MODKEY,               XK_k,           kscrollup,        {.i = scrollincrement} },
+	//{ MODKEY,               XK_j,           kscrolldown,      {.i = scrollincrement} },
 
   // Misc
   { TERMMOD,              XK_Escape,      keyboard_select,  { 0 } },
